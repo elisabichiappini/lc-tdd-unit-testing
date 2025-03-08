@@ -1,8 +1,10 @@
 
     // creo istanza
     class User {
-        name;
-        age;
+        constructor(name, age) {
+            this.name = name;
+            this.age = age;
+        }
     }
 // creare un'istanza della classe user
 test('creare un\'istanza della classe user', () => {

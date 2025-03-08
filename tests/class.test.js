@@ -1,7 +1,8 @@
 
     // creo istanza
     class User {
-        
+        name;
+        age;
     }
 // creare un'istanza della classe user
 test('creare un\'istanza della classe user', () => {

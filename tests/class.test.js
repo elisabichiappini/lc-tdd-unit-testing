@@ -27,10 +27,16 @@ class User {
     }
 
     set name(newName) {
+        if(newName !== 'string') {
+            throw new Error('name deve essere una stringa');
+        }
         this.#name = newName;
     }
 
     set age(newAge){
+        if(newAge !== 'number') {
+            throw new Error('name deve essere un numero');
+        }
         this.#age = newAge;
     }
 }
@@ -80,3 +86,15 @@ test('controllo che il costruttore mi obblighi a passare le proprietà della giu
 // })---> non serve questo test
 
 //procedo con il refactoring dopo che tutti i test sono superati -> modifico il codice per migliorarlo, esempio 
+
+// nuovo test
+test('controlla che posso settare per name e age valori solo della giusta tipologia', () => {
+    //definiamo il new user
+    const user = new User("Elisa", 34);
+    expect(() => {
+        user.name = 12;
+    }).toThrow();
+    expect(() => {
+        user.age = 'caio';
+    }).toThrow();
+})

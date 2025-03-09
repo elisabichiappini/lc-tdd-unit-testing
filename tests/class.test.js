@@ -34,5 +34,16 @@ test('controlla che il costruttore obblighi a passare le proprietà necessarie',
     //errore se passo solo il secondo parametro
     expect(() => new User(undefined, 23)).toThrow();
 });
-//controlla le proprietà name ed age siano della giusta tipologia
+
+//controlla le proprietà name ed age siano della giusta tipologia --> test troppo generico e con poco senso
+// test('controlla le proprietà name ed age siano della giusta tipologia', () => {
+//     const user = new User("Elisa", 34);
+//     expect(typeof user.name).toBe('string'); //in js sarebbe stato scritto così : if(typeof user.name === "string")
+//     expect(typeof user.age).toBe('number');
+// })
+//riformulo : controllo che il costruttore mi obblighi a passare le proprietà della giusta tipologia
+test('controllo che il costruttore mi obblighi a passare le proprietà della giusta tipologia', () => {
+    expect(() => new User(34, 'Elisa')).toThrow();
+})
+
 //controlla le proprietà private

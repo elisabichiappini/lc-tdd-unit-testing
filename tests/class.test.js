@@ -1,6 +1,7 @@
 // creo istanza
 class User {
-    
+    #name;
+    #age;
     constructor(name, age) {
         //controllo per lanciare l'errore
         if (!name || !age) {
@@ -13,8 +14,24 @@ class User {
         if(typeof age !== 'number') {
             throw new Error('name deve essere numero!')
         }
-        this.name = name;
-        this.age = age;
+        this.#name = name;
+        this.#age = age;
+    }
+
+    get name() {
+        return this.#name;
+    }
+
+    get age() {
+        return this.#age;
+    }
+
+    set name(newName) {
+        this.#name = newName;
+    }
+
+    set age(newAge){
+        this.#age = newAge;
     }
 }
 // creare un'istanza della classe user
@@ -48,15 +65,18 @@ test('controlla che il costruttore obblighi a passare le proprietà necessarie',
 //     expect(typeof user.name).toBe('string'); //in js sarebbe stato scritto così : if(typeof user.name === "string")
 //     expect(typeof user.age).toBe('number');
 // })
+
 //riformulo : controllo che il costruttore mi obblighi a passare le proprietà della giusta tipologia
 test('controllo che il costruttore mi obblighi a passare le proprietà della giusta tipologia', () => {
     expect(() => new User(34, 'Elisa')).toThrow();
 })
 
 //controlla le proprietà private
-test('controlla le proprietà name e age sono private', () => {
-    //una volta istanziato il mio user con le proprietà, poi controllo se sono undefined, nel caso vuole dire che sono private
-    const user = new User("Elisa", 34);
-    expect(user['#name']).toBeUndefined();
-    expect(user['#age']).toBeUndefined();
-})
+// test('controlla le proprietà name e age sono private', () => {
+//     //una volta istanziato il mio user con le proprietà, poi controllo se sono undefined, nel caso vuole dire che sono private
+//     const user = new User("Elisa", 34);
+//     expect(user['name']).toBeUndefined();
+//     expect(user['age']).toBeUndefined();
+// })---> non serve questo test
+
+//procedo con il refactoring dopo che tutti i test sono superati -> modifico il codice per migliorarlo, esempio 

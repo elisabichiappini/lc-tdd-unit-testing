@@ -6,6 +6,13 @@ class User {
         if (!name || !age) {
             throw new Error('Name and age are required');
         }
+        //controllo per capire se sono stringhe e numeri
+        if(typeof name !== 'string') {
+            throw new Error('name deve essere stringa!')
+        }
+        if(typeof age !== 'number') {
+            throw new Error('name deve essere numero!')
+        }
         this.name = name;
         this.age = age;
     }

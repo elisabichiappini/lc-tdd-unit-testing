@@ -54,3 +54,9 @@ test('controllo che il costruttore mi obblighi a passare le proprietà della giu
 })
 
 //controlla le proprietà private
+test('controlla le proprietà name e age sono private', () => {
+    //una volta istanziato il mio user con le proprietà, poi controllo se sono undefined, nel caso vuole dire che sono private
+    const user = new User("Elisa", 34);
+    expect(user['#name']).toBeUndefined();
+    expect(user['#age']).toBeUndefined();
+})

@@ -2,6 +2,7 @@
 class User {
     
     constructor(name, age) {
+        //controllo per lanciare l'errore
         if (!name || !age) {
             throw new Error('Name and age are required');
         }
@@ -11,7 +12,7 @@ class User {
 }
 // creare un'istanza della classe user
 test('creare un\'istanza della classe user', () => {
-    const user = new User();
+    const user = new User("Elisa", 34);
     //aggiungo cosa mi aspetto come risultato
     expect(user).toBeInstanceOf(User);
 });
@@ -19,7 +20,7 @@ test('creare un\'istanza della classe user', () => {
 //Altri test
 //Controlla che User contenga le proprietà name e age
 test('Controlla che User contenga le proprietà name e age', () => {
-    const user = new User();
+    const user = new User("Elisa", 34);
     expect(user).toHaveProperty("name");
     expect(user).toHaveProperty("age");
 });
